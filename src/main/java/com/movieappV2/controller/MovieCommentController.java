@@ -15,6 +15,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/v2/movie-comments")
 @RequiredArgsConstructor
+@CrossOrigin
 public class MovieCommentController {
 
     private final MovieCommentService movieCommentService;
