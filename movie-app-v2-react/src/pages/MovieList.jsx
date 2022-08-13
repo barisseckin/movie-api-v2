@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import { Button, Card, Grid } from 'semantic-ui-react'
 import MovieService from "../services/MovieService";
 
@@ -29,7 +30,7 @@ export default function MovieList() {
 
                   <Card
                     image={movie.imageUrl}
-                    header={movie.name}
+                    header={<a href={movie.link}>{movie.name}</a>}
                     meta={movie.rating}
                     description={movie.description}
                     extra={
