@@ -3,6 +3,8 @@ package com.movieappV2.service;
 import com.movieappV2.dto.CategoryDto;
 import com.movieappV2.dto.converter.CategoryDtoConverter;
 import com.movieappV2.dto.request.CreateCategoryRequest;
+import com.movieappV2.dto.request.UpdateCategoryRequest;
+import com.movieappV2.dto.request.UpdateMovieRequest;
 import com.movieappV2.exception.NotFoundException;
 import com.movieappV2.model.Category;
 import com.movieappV2.repository.CategoryRepository;
@@ -42,10 +44,17 @@ public class CategoryService {
         categoryRepository.deleteById(category.getId());
     }
 
+    public CategoryDto update(String name, UpdateCategoryRequest request) {
+        Category category = getCategoryByName(name);
+
+        category.setName(request.getName());
+
+        return categoryDtoConverter.convert(categoryRepository.save(category));
+    }
+
     protected Category getCategoryByName(String name) {
         return categoryRepository.findCategoryByName(name)
                 .orElseThrow(() -> new NotFoundException("category not found, category name: " + name));
     }
-
 
 }

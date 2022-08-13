@@ -3,6 +3,7 @@ package com.movieappV2.service;
 import com.movieappV2.dto.MovieCommentDto;
 import com.movieappV2.dto.converter.MovieCommentDtoConverter;
 import com.movieappV2.dto.request.CreateMovieCommentRequest;
+import com.movieappV2.dto.request.UpdateMovieCommentRequest;
 import com.movieappV2.exception.NotFoundException;
 import com.movieappV2.model.Movie;
 import com.movieappV2.model.MovieComment;
@@ -45,8 +46,22 @@ public class MovieCommentService {
     }
 
     public void deleteByBody(String body) {
-        MovieComment movieComment = movieCommentRepository.findByBody(body).orElseThrow(() -> new NotFoundException("comment not found, comment body: " + body));
+        MovieComment movieComment = getByBody(body);
+
         movieCommentRepository.deleteById(movieComment.getId());
     }
 
+    public MovieCommentDto update(String body, UpdateMovieCommentRequest request) {
+        MovieComment movieComment = getByBody(body);
+
+        movieComment.setBody(request.getBody());
+        movieComment.setUpdateDate(LocalDate.now());
+
+        return movieCommentDtoConverter.convert(movieCommentRepository.save(movieComment));
+    }
+
+    private MovieComment getByBody(String body) {
+        return movieCommentRepository.findByBody(body).orElseThrow(
+                () -> new NotFoundException("comment not found, comment body: " + body));
+    }
 }

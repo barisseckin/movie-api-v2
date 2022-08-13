@@ -2,6 +2,7 @@ package com.movieappV2.controller;
 
 import com.movieappV2.dto.UserDto;
 import com.movieappV2.dto.request.CreateUserRequest;
+import com.movieappV2.dto.request.UpdateUserRequest;
 import com.movieappV2.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -47,5 +48,10 @@ public class UserController {
     @PutMapping("/activate/{mail}")
     public ResponseEntity<UserDto> activateUser(@PathVariable("mail") String mail) {
         return new ResponseEntity<>(userService.activateUser(mail), HttpStatus.OK);
+    }
+
+    @PutMapping("/update/{mail}")
+    public ResponseEntity<UserDto> update(@PathVariable("mail") String mail, UpdateUserRequest request) {
+        return new ResponseEntity<>(userService.update(mail, request), HttpStatus.OK);
     }
 }

@@ -3,6 +3,7 @@ package com.movieappV2.service;
 import com.movieappV2.dto.MovieDto;
 import com.movieappV2.dto.converter.MovieDtoConverter;
 import com.movieappV2.dto.request.CreateMovieRequest;
+import com.movieappV2.dto.request.UpdateMovieRequest;
 import com.movieappV2.exception.NotFoundException;
 import com.movieappV2.model.Category;
 import com.movieappV2.model.Movie;
@@ -72,6 +73,23 @@ public class MovieService {
     public void deleteByName(String name) {
         Movie movie = movieRepository.findMovieByName(name).orElseThrow(() -> new NotFoundException("movie not found, movie name: " + name));
         movieRepository.deleteById(movie.getId());
+    }
+
+    public MovieDto update(String name, UpdateMovieRequest request) {
+        Category category = categoryService.getCategoryByName(request.getCategoryName());
+
+        Movie movie = getMovieByName(name);
+        movie.setName(request.getName());
+        movie.setLink(request.getLink());
+        movie.setDescription(request.getDescription());
+        movie.setImageUrl(request.getImageUrl());
+        movie.setReleaseYear(request.getReleaseYear());
+        movie.setCategory(category);
+        movie.setLanguage(request.getLanguage());
+        movie.setSubTitleLanguage(request.getSubTitleLanguage());
+        movie.setUpdateDate(LocalDate.now());
+
+        return movieDtoConverter.convert(movieRepository.save(movie));
     }
 
     protected Movie getMovieByName(String name) {

@@ -2,6 +2,7 @@ package com.movieappV2.controller;
 
 import com.movieappV2.dto.CategoryDto;
 import com.movieappV2.dto.request.CreateCategoryRequest;
+import com.movieappV2.dto.request.UpdateCategoryRequest;
 import com.movieappV2.service.CategoryService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -37,5 +38,10 @@ public class CategoryController {
     public ResponseEntity<?> deleteByName(@PathVariable("name") String name) {
         categoryService.deleteByName(name);
         return ResponseEntity.ok(HttpStatus.OK);
+    }
+
+    @PutMapping("/update/{name}")
+    public ResponseEntity<CategoryDto> update(@PathVariable("name") String name, @RequestBody @Valid UpdateCategoryRequest request) {
+        return new ResponseEntity<>(categoryService.update(name, request), HttpStatus.OK);
     }
 }

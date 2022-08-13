@@ -2,6 +2,7 @@ package com.movieappV2.controller;
 
 import com.movieappV2.dto.MovieDto;
 import com.movieappV2.dto.request.CreateMovieRequest;
+import com.movieappV2.dto.request.UpdateMovieRequest;
 import com.movieappV2.service.MovieService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -52,5 +53,10 @@ public class MovieController {
     public ResponseEntity<?> deleteByName(@PathVariable("name") String name) {
         movieService.deleteByName(name);
         return ResponseEntity.ok(HttpStatus.OK);
+    }
+
+    @PutMapping("/update/{name}")
+    public ResponseEntity<MovieDto> update(@PathVariable("name") String name, @RequestBody @Valid UpdateMovieRequest request) {
+        return new ResponseEntity<>(movieService.update(name, request), HttpStatus.OK);
     }
 }
