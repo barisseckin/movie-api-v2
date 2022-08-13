@@ -10,6 +10,7 @@ import com.movieappV2.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Service
@@ -23,7 +24,8 @@ public class UserService {
         User user = new User(request.getUserName(),
                 request.getPassword(),
                 request.getMail(),
-                true);
+                true,
+                LocalDate.now());
 
         return userDtoConverter.convert(userRepository.save(user));
     }
@@ -49,6 +51,7 @@ public class UserService {
     public UserDto deactivateUser(String mail) {
         User user = getUserByMail(mail);
         user.setItActive(false);
+        user.setUpdateDate(LocalDate.now());
 
         return userDtoConverter.convert(userRepository.save(user));
     }
@@ -56,6 +59,7 @@ public class UserService {
     public UserDto activateUser(String mail) {
         User user = getUserByMail(mail);
         user.setItActive(true);
+        user.setUpdateDate(LocalDate.now());
 
         return userDtoConverter.convert(userRepository.save(user));
     }
@@ -64,6 +68,7 @@ public class UserService {
         User user = getUserByMail(mail);
 
         user.setPassword(request.getPassword());
+        user.setUpdateDate(LocalDate.now());
 
         return userDtoConverter.convert(userRepository.save(user));
     }

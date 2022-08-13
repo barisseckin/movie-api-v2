@@ -21,7 +21,7 @@ public class MovieDtoConverter {
                 movie.getSubTitleLanguage(),
                 movie.getLink(),
                 movie.getImageUrl(),
-                new CategoryDto(movie.getName()));
+                new CategoryDto(movie.getCategory().getName()));
     }
 
     public List<MovieDto> convert(List<Movie> movies) {

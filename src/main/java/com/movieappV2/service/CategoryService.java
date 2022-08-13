@@ -11,6 +11,7 @@ import com.movieappV2.repository.CategoryRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Service
@@ -21,7 +22,8 @@ public class CategoryService {
     private final CategoryDtoConverter categoryDtoConverter;
 
     public CategoryDto save(CreateCategoryRequest request) {
-        Category category = new Category(request.getName());
+        Category category = new Category(request.getName(),
+                LocalDate.now());
 
         return categoryDtoConverter.convert(categoryRepository.save(category));
     }
@@ -48,6 +50,7 @@ public class CategoryService {
         Category category = getCategoryByName(name);
 
         category.setName(request.getName());
+        category.setUpdateDate(LocalDate.now());
 
         return categoryDtoConverter.convert(categoryRepository.save(category));
     }

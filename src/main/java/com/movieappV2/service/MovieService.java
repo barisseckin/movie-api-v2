@@ -93,7 +93,8 @@ public class MovieService {
     }
 
     protected Movie getMovieByName(String name) {
-        return movieRepository.findMovieByName(name).orElseThrow(() -> new NotFoundException("movie not found, movie name: " + name));
+        return movieRepository.findMovieByName(name).orElseThrow(
+                () -> new NotFoundException("movie not found, movie name: " + name));
     }
 
 }
