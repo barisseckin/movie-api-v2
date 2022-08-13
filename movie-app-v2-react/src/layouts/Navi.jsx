@@ -8,7 +8,7 @@ export default function Navi() {
     <div>
       <Segment inverted>
         <Menu inverted pointing secondary>
-          <Menu.Item name="home"/>
+          <Menu.Item name="Home"/>
 
           <Menu.Item name="messages" />
 
