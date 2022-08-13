@@ -32,7 +32,12 @@ public class MovieCommentService {
                 user,
                 movie);
 
-        return movieCommentDtoConverter.convert(movieCommentRepository.save(movieComment));
+        if (user.isItActive()) {
+            return movieCommentDtoConverter.convert(movieCommentRepository.save(movieComment));
+        }
+        else {
+            return null;
+        }
     }
 
     public List<MovieCommentDto> getAll() {

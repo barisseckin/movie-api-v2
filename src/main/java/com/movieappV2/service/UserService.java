@@ -32,16 +32,35 @@ public class UserService {
     }
 
     public UserDto getByMail(String mail) {
-        User user = userRepository.findUserByMail(mail).orElseThrow(() -> new NotFoundException("user not found, user mail: " + mail));
+        User user = userRepository.findUserByMail(mail)
+                .orElseThrow(() -> new NotFoundException("user not found, user mail: " + mail));
+
         return userDtoConverter.convert(user);
     }
 
     public void deleteByMail(String mail) {
-        User user = userRepository.findUserByMail(mail).orElseThrow(() -> new NotFoundException("user not found, user mail: " + mail));
+        User user = userRepository.findUserByMail(mail)
+                .orElseThrow(() -> new NotFoundException("user not found, user mail: " + mail));
+
         userRepository.deleteById(user.getId());
+    }
+
+    public UserDto deactivateUser(String mail) {
+        User user = getUserByMail(mail);
+        user.setItActive(false);
+
+        return userDtoConverter.convert(userRepository.save(user));
+    }
+
+    public UserDto activateUser(String mail) {
+        User user = getUserByMail(mail);
+        user.setItActive(true);
+
+        return userDtoConverter.convert(userRepository.save(user));
     }
 
     protected User getUserByMail(String mail) {
         return userRepository.findUserByMail(mail).orElseThrow(() -> new NotFoundException("user not found, user mail: " + mail));
     }
+
 }

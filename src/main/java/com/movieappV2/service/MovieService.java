@@ -1,6 +1,5 @@
 package com.movieappV2.service;
 
-import com.movieappV2.dto.CategoryDto;
 import com.movieappV2.dto.MovieDto;
 import com.movieappV2.dto.converter.MovieDtoConverter;
 import com.movieappV2.dto.request.CreateMovieRequest;
@@ -25,7 +24,7 @@ public class MovieService {
 
 
     public MovieDto save(CreateMovieRequest request) {
-        Category category = categoryService.getCategoryByName(request.getName());
+        Category category = categoryService.getCategoryByName(request.getCategoryName());
 
         Movie movie = new Movie(request.getName(),
                 request.getDescription(),
@@ -35,6 +34,7 @@ public class MovieService {
                 request.getSubTitleLanguage(),
                 LocalDate.now(),
                 request.getLink(),
+                request.getImageUrl(),
                 category);
 
         return movieDtoConverter.convert(movieRepository.save(movie));
@@ -55,13 +55,6 @@ public class MovieService {
         return movieDtoConverter.convert(movieRepository.findAll()
                 .stream()
                 .filter(movie -> movie.getRating() >= rating)
-                .collect(Collectors.toList()));
-    }
-
-    public List<MovieDto> getByCategory(String category) {
-        return movieDtoConverter.convert(movieRepository.findAll()
-                .stream()
-                .filter(movie -> movie.getCategory().getName().equals(category))
                 .collect(Collectors.toList()));
     }
 

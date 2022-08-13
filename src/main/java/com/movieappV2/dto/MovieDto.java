@@ -15,5 +15,6 @@ public class MovieDto {
     private String language;
     private String subTitleLanguage;
     private String link;
+    private String imageUrl;
     private CategoryDto categoryDto;
 }

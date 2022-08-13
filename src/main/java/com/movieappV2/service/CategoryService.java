@@ -29,12 +29,16 @@ public class CategoryService {
     }
 
     public CategoryDto getByName(String name) {
-        Category category = categoryRepository.findCategoryByName(name).orElseThrow(() -> new NotFoundException("Category not found, category name: " + name));
+        Category category = categoryRepository.findCategoryByName(name)
+                .orElseThrow(() -> new NotFoundException("Category not found, category name: " + name));
+
         return categoryDtoConverter.convert(category);
     }
 
     public void deleteByName(String name) {
-        Category category = categoryRepository.findCategoryByName(name).orElseThrow(() -> new NotFoundException("Category not found, category name: " + name));
+        Category category = categoryRepository.findCategoryByName(name)
+                .orElseThrow(() -> new NotFoundException("Category not found, category name: " + name));
+
         categoryRepository.deleteById(category.getId());
     }
 

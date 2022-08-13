@@ -24,6 +24,7 @@ public class MovieCommentDtoConverter {
                         movieComment.getMovie().getLanguage(),
                         movieComment.getMovie().getSubTitleLanguage(),
                         movieComment.getMovie().getLink(),
+                        movieComment.getMovie().getImageUrl(),
                         new CategoryDto(movieComment.getMovie().getCategory().getName())));
     }
 

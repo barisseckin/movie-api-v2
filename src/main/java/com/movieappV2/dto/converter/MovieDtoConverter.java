@@ -20,6 +20,7 @@ public class MovieDtoConverter {
                 movie.getLanguage(),
                 movie.getSubTitleLanguage(),
                 movie.getLink(),
+                movie.getImageUrl(),
                 new CategoryDto(movie.getName()));
     }
 
