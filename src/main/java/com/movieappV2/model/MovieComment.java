@@ -22,4 +22,11 @@ public class MovieComment {
     private User user;
     @ManyToOne(fetch = FetchType.EAGER)
     private Movie movie;
+
+    public MovieComment(String body, LocalDate createDate, User user, Movie movie) {
+        this.body = body;
+        this.createDate = createDate;
+        this.user = user;
+        this.movie = movie;
+    }
 }

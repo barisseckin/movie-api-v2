@@ -18,4 +18,11 @@ public class User {
     private String password;
     private String mail;
     private boolean isItActive;
+
+    public User(String userName, String password, String mail, boolean isItActive) {
+        this.userName = userName;
+        this.password = password;
+        this.mail = mail;
+        this.isItActive = isItActive;
+    }
 }

@@ -27,4 +27,19 @@ public class Movie {
     private String link;
     @ManyToOne(fetch = FetchType.EAGER)
     Category category;
+
+
+    public Movie(String name, String description, String producer, int releaseYear, String language, String subTitleLanguage,
+                 LocalDate createDate, String link, Category category) {
+
+        this.name = name;
+        this.description = description;
+        this.producer = producer;
+        this.releaseYear = releaseYear;
+        this.language = language;
+        this.subTitleLanguage = subTitleLanguage;
+        this.createDate = createDate;
+        this.link = link;
+        this.category = category;
+    }
 }
