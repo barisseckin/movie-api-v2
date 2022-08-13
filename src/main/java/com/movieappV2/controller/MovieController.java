@@ -59,4 +59,14 @@ public class MovieController {
     public ResponseEntity<MovieDto> update(@PathVariable("name") String name, @RequestBody @Valid UpdateMovieRequest request) {
         return new ResponseEntity<>(movieService.update(name, request), HttpStatus.OK);
     }
+
+    @PutMapping("/increase-rating/{name}")
+    public ResponseEntity<MovieDto> increaseTheRating(@PathVariable("name") String name) {
+        return new ResponseEntity<>(movieService.increaseTheRating(name), HttpStatus.OK);
+    }
+
+    @PutMapping("/reduce-rating/{name}")
+    public ResponseEntity<MovieDto> reduceTheRating(@PathVariable("name") String name) {
+        return new ResponseEntity<>(movieService.reduceTheRating(name), HttpStatus.OK);
+    }
 }

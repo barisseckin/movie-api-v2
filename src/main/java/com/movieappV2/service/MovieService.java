@@ -71,7 +71,8 @@ public class MovieService {
     }
 
     public void deleteByName(String name) {
-        Movie movie = movieRepository.findMovieByName(name).orElseThrow(() -> new NotFoundException("movie not found, movie name: " + name));
+        Movie movie = movieRepository.findMovieByName(name).orElseThrow(
+                () -> new NotFoundException("movie not found, movie name: " + name));
         movieRepository.deleteById(movie.getId());
     }
 
@@ -87,6 +88,24 @@ public class MovieService {
         movie.setCategory(category);
         movie.setLanguage(request.getLanguage());
         movie.setSubTitleLanguage(request.getSubTitleLanguage());
+        movie.setUpdateDate(LocalDate.now());
+
+        return movieDtoConverter.convert(movieRepository.save(movie));
+    }
+
+    public MovieDto increaseTheRating(String name) {
+        Movie movie = getMovieByName(name);
+
+        movie.setRating(movie.getRating() + 1);
+        movie.setUpdateDate(LocalDate.now());
+
+        return movieDtoConverter.convert(movieRepository.save(movie));
+    }
+
+    public MovieDto reduceTheRating(String name) {
+        Movie movie = getMovieByName(name);
+
+        movie.setRating(movie.getRating() - 1);
         movie.setUpdateDate(LocalDate.now());
 
         return movieDtoConverter.convert(movieRepository.save(movie));
