@@ -38,7 +38,11 @@ public class MovieService {
                 request.getImageUrl(),
                 category);
 
-        return movieDtoConverter.convert(movieRepository.save(movie));
+        if(movieRepository.findMovieByName(request.getName()).isEmpty()) {
+            return movieDtoConverter.convert(movieRepository.save(movie));
+        }
+
+        return null;
     }
 
     public List<MovieDto> getAll() {
