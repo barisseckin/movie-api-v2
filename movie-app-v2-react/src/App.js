@@ -1,16 +1,21 @@
-import { BrowserRouter } from 'react-router-dom';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import './App.css';
-import Navi from './layouts/Navi';
 import Home from './pages/Home';
+import MovieDetails from './pages/MovieDetails';
 
 function App() {
 
   return (
     <BrowserRouter>
-
     <div className="App">
-      <Home />
+
+      <Routes>
+        <Route exact path='' element={<Home />}></Route>
+        <Route exact path='/movie-details/:name' element={<MovieDetails />}></Route>
+      </Routes>
+
     </div>
+
     </BrowserRouter>
   );
 }

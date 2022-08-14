@@ -24,6 +24,11 @@ export default class MovieService {
     increaseMovieRating(movieName) {
 
         return axios.put("http://localhost:8080/v2/movies/increase-rating/"+movieName);
-
     }
+
+    getMovieByName(movieName) {
+
+        return axios.get("http://localhost:8080/v2/movies/get-by-name/"+movieName);
+    }
+
 }

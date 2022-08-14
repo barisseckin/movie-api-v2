@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { Button, Card, Grid } from 'semantic-ui-react'
+import { Button, Card, Grid, Icon, Label } from 'semantic-ui-react'
 import MovieService from "../services/MovieService";
 
 export default function MovieList() {
@@ -31,13 +31,31 @@ export default function MovieList() {
                   <Card
                     image={movie.imageUrl}
                     header={<a href={movie.link}>{movie.name}</a>}
-                    meta={movie.rating}
+                    meta={movie.language}
                     description={movie.description}
                     extra={
+                      <div>
+                      <Button as='div' labelPosition='right'>
                       <Button 
-                      basic 
-                      color="blue"
-                      onClick={() => increaseMovieRating(movie.name)}>Like</Button>}
+                        color='red'
+                        onClick={() => {increaseMovieRating(movie.name)}}>
+                        <Icon name='heart' />
+                        Like
+                      </Button>
+                      <Label as='a' basic color='red' pointing='right'>
+                        {movie.rating}
+                      </Label>
+                    </Button>
+                      <Link to={{pathname: '/movie-details/' + movie.name}}>
+                      <Button 
+                        basic
+                        color="blue"
+                      >
+                      Details
+                      </Button>
+                      </Link>
+
+                     </div>}
                   />
 
                 ))}
