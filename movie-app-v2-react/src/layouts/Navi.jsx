@@ -1,4 +1,7 @@
 import React, { useEffect, useState } from "react";
+import { Dropdown, DropdownButton } from "react-bootstrap";
+import DropdownItem from "react-bootstrap/esm/DropdownItem";
+import DropdownMenu from "react-bootstrap/esm/DropdownMenu";
 import { Link } from "react-router-dom";
 import { Menu, Segment } from "semantic-ui-react";
 import CategoryService from "../services/CategoryService";
@@ -24,7 +27,7 @@ export default function Navi() {
           <Menu.Item name="messages" />
 
           <Menu.Item name="friends"/>
-          
+
         </Menu>
 
    
