@@ -23,4 +23,15 @@ public class Category {
         this.name = name;
         this.createDate = createDate;
     }
+
+    public Category(Long id, String name, LocalDate createDate, LocalDate updateDate) {
+        this.id = id;
+        this.name = name;
+        this.createDate = createDate;
+        this.updateDate = updateDate;
+    }
+
+    public Category(String name) {
+        this.name = name;
+    }
 }
