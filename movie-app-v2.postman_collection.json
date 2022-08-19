@@ -1,0 +1,153 @@
+{
+	"info": {
+		"_postman_id": "b8ac8e73-6aa4-45aa-9cfa-dbf2592e554f",
+		"name": "movie-app-v2",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "localhost:8080/v2/categories",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "localhost:8080/v2/categories"
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8080/v2/categories",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Action\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "localhost:8080/v2/categories"
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8080/v2/movies",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"name\": \"test movie name\",\n  \"description\": \"test movie description\",\n  \"producer\": \"test producer\",\n  \"releaseYear\": 2018,\n  \"language\": \"Turkish\",\n  \"subTitleLanguage\": \"English\",\n  \"link\": \"test link\",\n  \"imageUrl\": \"test image url\",\n  \"categoryName\": \"Action\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "localhost:8080/v2/movies"
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8080/v2/movies",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "localhost:8080/v2/movies"
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8080/v2/users",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"userName\": \"baris\",\n  \"password\": \"12345\",\n  \"mail\": \"barisseckin0@gmail.com\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "localhost:8080/v2/users"
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8080/v2/users",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "localhost:8080/v2/users"
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8080/v2/users/deactivate/barisseckin0@gmail.com",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": "localhost:8080/v2/users/deactivate/barisseckin0@gmail.com"
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8080/v2/users/activate/barisseckin0@gmail.com",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": "localhost:8080/v2/users/activate/barisseckin0@gmail.com"
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8080/v2/movie-comments",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"body\": \"Test comment body\",\n  \"userMail\": \"barisseckin0@gmail.com\",\n  \"movieName\": \"test movie name 222\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "localhost:8080/v2/movie-comments"
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8080/v2/movie-comments",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "localhost:8080/v2/movie-comments"
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8080/v2/movies/increase-rating/test ",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": "localhost:8080/v2/movies/increase-rating/test "
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8080/v2/movies/Recep İvedik1",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": "localhost:8080/v2/movies/Recep İvedik1"
+			},
+			"response": []
+		}
+	]
+}
