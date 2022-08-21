@@ -2,7 +2,7 @@
 
 <p>Technologies used in the construction of the project</p>
 <ul>
-  <li>JDK-18</li>
+  <li>JDK-11</li>
   <li>Javascript</li>
   <li>Spring Boot</li>
   <li>React</li>
