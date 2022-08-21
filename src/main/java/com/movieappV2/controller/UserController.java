@@ -41,12 +41,12 @@ public class UserController {
         return ResponseEntity.ok(HttpStatus.OK);
     }
 
-    @PutMapping("/deactivate/{mail}")
+    @PatchMapping("/deactivate/{mail}")
     public ResponseEntity<UserDto> deactivateUser(@PathVariable("mail") String mail) {
         return new ResponseEntity<>(userService.deactivateUser(mail), HttpStatus.OK);
     }
 
-    @PutMapping("/activate/{mail}")
+    @PatchMapping("/activate/{mail}")
     public ResponseEntity<UserDto> activateUser(@PathVariable("mail") String mail) {
         return new ResponseEntity<>(userService.activateUser(mail), HttpStatus.OK);
     }
