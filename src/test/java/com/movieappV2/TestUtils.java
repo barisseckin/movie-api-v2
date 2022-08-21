@@ -2,8 +2,10 @@ package com.movieappV2;
 
 import com.movieappV2.dto.CategoryDto;
 import com.movieappV2.dto.MovieDto;
+import com.movieappV2.dto.UserDto;
 import com.movieappV2.model.Category;
 import com.movieappV2.model.Movie;
+import com.movieappV2.model.User;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -44,5 +46,15 @@ public class TestUtils {
         return movieList.stream().map(movie -> new MovieDto(movie.getName(), movie.getDescription(), movie.getRating(),
                 movie.getProducer(), movie.getReleaseYear(), movie.getLanguage(), movie.getSubTitleLanguage(),
                 movie.getLink(), movie.getImageUrl(), new CategoryDto(movie.getCategory().getName()))).collect(Collectors.toList());
+    }
+
+    public static List<User> generateUserList() {
+        return LongStream.range(0, 5).mapToObj(i ->
+                new User(i, "Test-Username", "Test-Password", "test@gmail.com",
+                        true, LocalDate.now(), LocalDate.now())).collect(Collectors.toList());
+    }
+
+    public static List<UserDto> generateUserDtoList(List<User> userList) {
+        return userList.stream().map(user -> new UserDto(user.getUserName(), user.getMail(), user.isItActive())).collect(Collectors.toList());
     }
 }
