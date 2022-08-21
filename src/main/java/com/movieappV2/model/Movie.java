@@ -46,4 +46,21 @@ public class Movie {
         this.imageUrl = imageUrl;
         this.category = category;
     }
+
+    public Movie(Long id, String name, String description, int rating, String producer, int releaseYear, String language,
+                 String subTitleLanguage, LocalDate createDate, String link, String imageUrl, Category category) {
+
+        this.id = id;
+        this.name = name;
+        this.description = description;
+        this.rating = rating;
+        this.producer = producer;
+        this.releaseYear = releaseYear;
+        this.language = language;
+        this.subTitleLanguage = subTitleLanguage;
+        this.createDate = createDate;
+        this.link = link;
+        this.imageUrl = imageUrl;
+        this.category = category;
+    }
 }

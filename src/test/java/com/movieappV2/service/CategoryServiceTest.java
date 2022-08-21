@@ -3,6 +3,7 @@ package com.movieappV2.service;
 import com.movieappV2.TestUtils;
 import com.movieappV2.dto.CategoryDto;
 import com.movieappV2.dto.converter.CategoryDtoConverter;
+import com.movieappV2.dto.request.CreateCategoryRequest;
 import com.movieappV2.exception.NotFoundException;
 import com.movieappV2.model.Category;
 import com.movieappV2.repository.CategoryRepository;
@@ -81,6 +82,27 @@ public class CategoryServiceTest extends TestUtils {
         assertThrows(NotFoundException.class, () -> categoryService.getByName("Test-Name"));
 
         verify(categoryRepository).findCategoryByName("Test-Name");
+    }
+
+    @Test
+    public void testSave_itShouldReturnCategoryDto() {
+        LocalDate createDate = LocalDate.now();
+
+        CreateCategoryRequest request = new CreateCategoryRequest();
+        request.setName("Test-Name");
+
+        Category category = new Category("Test-Name", createDate);
+        Category savedCategory = new Category(1L, "Test-Name", createDate);
+        CategoryDto categoryDto = new CategoryDto("Test-Name");
+
+        when(categoryRepository.save(category)).thenReturn(savedCategory);
+        when(categoryDtoConverter.convert(savedCategory)).thenReturn(categoryDto);
+
+        CategoryDto result = categoryService.save(request);
+
+        assertEquals(result, categoryDto);
+        verify(categoryRepository).save(category);
+        verify(categoryDtoConverter).convert(savedCategory);
     }
 
 }

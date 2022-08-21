@@ -4,6 +4,7 @@ import com.movieappV2.TestUtils;
 import com.movieappV2.dto.CategoryDto;
 import com.movieappV2.dto.MovieDto;
 import com.movieappV2.dto.converter.MovieDtoConverter;
+import com.movieappV2.dto.request.CreateMovieRequest;
 import com.movieappV2.exception.NotFoundException;
 import com.movieappV2.model.Category;
 import com.movieappV2.model.Movie;

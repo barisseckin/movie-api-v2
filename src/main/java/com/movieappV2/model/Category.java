@@ -31,7 +31,9 @@ public class Category {
         this.updateDate = updateDate;
     }
 
-    public Category(String name) {
+    public Category(Long id, String name, LocalDate createDate) {
+        this.id = id;
         this.name = name;
+        this.createDate = createDate;
     }
 }
