@@ -1,5 +1,6 @@
 package com.movieappV2.model;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -8,6 +9,7 @@ import java.time.LocalDate;
 
 @Data
 @NoArgsConstructor
+@AllArgsConstructor
 @Entity
 @Table
 public class User {
@@ -29,4 +31,6 @@ public class User {
         this.isItActive = isItActive;
         this.createDate = createDate;
     }
+
+
 }
